@@ -1,7 +1,8 @@
-# EMBER-Lerobot — VR Teleoperation for SO-101
+# XLVR — VR Teleoperation for XLeRobot
 
 > A project by the **Embodied Intelligence & Robotics Center (EMBER), UC Berkeley**
 
+> **XLVR** is the VR teleoperation code for [XLeRobot](https://github.com/Vector-Wangel/XLeRobot).
 > Control a real SO-101 robot arm with a **Meta Quest 3** headset in real time.
 > Delta-control IK bridge built on top of [LeRobot](https://github.com/huggingface/lerobot) and [XLeRobot/XLeVR](https://github.com/Vector-Wangel/XLeRobot).
 
@@ -10,7 +11,7 @@
 ## Repo structure
 
 ```
-EMBER-lerobot/
+XLVR/
 ├── model/
 │   └── SO101Robot.py        # SO-101 robot interface + 2D IK
 ├── scripts/
@@ -47,8 +48,8 @@ This project adds a VR teleoperation layer on top of LeRobot. Instead of replayi
 ### 1. Clone this repo and install dependencies
 
 ```bash
-git clone https://github.com/xiaozh26/EMBER-lerobot.git
-cd EMBER-lerobot
+git clone https://github.com/xiaozh26/XLVR.git
+cd XLVR
 pip install -r requirements.txt
 ```
 
@@ -71,7 +72,7 @@ Expected layout:
 
 ```
 parent_dir/
-├── EMBER-lerobot/        ← this repo
+├── XLVR/                 ← this repo
 └── XLeRobot/
     └── XLeVR/
         ├── vr_monitor.py
