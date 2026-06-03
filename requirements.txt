@@ -1,0 +1,9 @@
+# Core robotics stack
+lerobot[feetech]
+
+# VR server
+aiohttp
+
+# Visualisation (viser robot mirror + sim)
+viser
+yourdfpy

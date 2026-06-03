@@ -7,26 +7,27 @@
 
 ---
 
-## EMBER Additions
+## Repo structure
 
-This is a fork of [LeRobot](https://github.com/huggingface/lerobot) by HuggingFace. The files added by EMBER are:
+```
+EMBER-lerobot/
+├── model/
+│   └── SO101Robot.py        # SO-101 robot interface + 2D IK
+├── scripts/
+│   ├── vr_teleop_real.py    # main VR teleop for real SO-101 arms
+│   ├── vr_teleop_sim.py     # VR teleop in simulation (viser)
+│   └── print_joint_angles.py
+├── requirements.txt
+└── README.md
+```
 
-| File | Description |
-|---|---|
-| `src/lerobot/scripts/vr_teleop_real.py` | Main VR teleop script for real SO-101 arms |
-| `src/lerobot/scripts/vr_teleop_sim.py` | VR teleop for simulation |
-| `src/lerobot/scripts/print_joint_angles.py` | Print live joint angles from both arms |
-| `src/lerobot/model/SO101Robot.py` | SO-101 robot interface and IK |
-| `src/lerobot/model/kinematics.py` | 2D arm kinematics |
-| `examples/8_vr_teleop_with_dataset_recording.py` | VR teleop with LeRobot dataset recording |
-
-Everything else is standard LeRobot infrastructure.
+[LeRobot](https://github.com/huggingface/lerobot) is a pip dependency — only the EMBER-specific files live here.
 
 ---
 
 ## Overview
 
-This project adds a VR teleoperation layer on top of the standard LeRobot stack. Instead of replaying recorded trajectories, you stream live hand-tracking data from a Quest 3 to a SO-101 arm (or a pair of arms) over a Cloudflare tunnel — no local network pairing required.
+This project adds a VR teleoperation layer on top of LeRobot. Instead of replaying recorded trajectories, you stream live hand-tracking data from a Quest 3 to a SO-101 arm (or a pair of arms) over a Cloudflare tunnel — no local network pairing required.
 
 **Key design choices:**
 
@@ -43,12 +44,12 @@ This project adds a VR teleoperation layer on top of the standard LeRobot stack.
 
 ## Prerequisites
 
-### 1. Clone and install this repo
+### 1. Clone this repo and install dependencies
 
 ```bash
 git clone https://github.com/xiaozh26/EMBER-lerobot.git
 cd EMBER-lerobot
-pip install -e ".[feetech]"
+pip install -r requirements.txt
 ```
 
 Verify:
@@ -70,7 +71,7 @@ Expected layout:
 
 ```
 parent_dir/
-├── EMBER-lerobot/     ← this repo
+├── EMBER-lerobot/        ← this repo
 └── XLeRobot/
     └── XLeVR/
         ├── vr_monitor.py
@@ -113,7 +114,7 @@ pip install aiohttp
 ### Single arm
 
 ```bash
-python src/lerobot/scripts/vr_teleop_real.py \
+python scripts/vr_teleop_real.py \
     --arm right \
     --robot_port /dev/tty.usbmodemXXXX
 ```
@@ -121,7 +122,7 @@ python src/lerobot/scripts/vr_teleop_real.py \
 ### Dual arm
 
 ```bash
-python src/lerobot/scripts/vr_teleop_real.py \
+python scripts/vr_teleop_real.py \
     --arm both \
     --left_robot_port  /dev/tty.usbmodemXXXX \
     --right_robot_port /dev/tty.usbmodemXXXX
