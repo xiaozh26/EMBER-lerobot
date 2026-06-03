@@ -8,8 +8,8 @@ Uses the same robot IDs as vr_teleop_real.py so calibration files load automatic
 
 Example:
     python print_joint_angles.py \
-      --left_port  /dev/tty.usbmodem5A7C1190111 \
-      --right_port /dev/tty.usbmodem5A7C1231311 \
+      --left_port  /dev/tty.usbmodemXXXX \
+      --right_port /dev/tty.usbmodemXXXX \
       --fps 10
 """
 
@@ -24,9 +24,9 @@ MOTOR_NAMES = ["shoulder_pan", "shoulder_lift", "elbow_flex", "wrist_flex", "wri
 
 def parse_args():
     p = argparse.ArgumentParser(description="Print bimanual robot joint angles in real time.")
-    p.add_argument("--left_port",  default="/dev/tty.usbmodem5A7C1190111", help="Serial port for the left arm.")
+    p.add_argument("--left_port",  default="/dev/tty.usbmodemXXXX", help="Serial port for the left arm.")
     p.add_argument("--left_id",    default="robot2", help="Calibration ID for the left arm (default: robot2).")
-    p.add_argument("--right_port", default="/dev/tty.usbmodem5A7C1231311", help="Serial port for the right arm.")
+    p.add_argument("--right_port", default="/dev/tty.usbmodemXXXX", help="Serial port for the right arm.")
     p.add_argument("--right_id",   default="robot1", help="Calibration ID for the right arm (default: robot1).")
     p.add_argument("--fps",        type=int, default=10, help="Print frequency in Hz (default: 10).")
     return p.parse_args()

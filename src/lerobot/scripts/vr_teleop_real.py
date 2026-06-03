@@ -10,7 +10,7 @@ Origin-relative control (based on official xlerobot_vr.py):
     hand and grip again. The robot never moves unless you are actively gripping.
 
 Usage:
-    python vr_teleop_real.py --robot_port /dev/tty.usbmodem5A7C1231311 --arm right
+    python vr_teleop_real.py --robot_port /dev/tty.usbmodemXXXX --arm right
 
     # After "Combined server started" appears, run in another terminal:
     cloudflared tunnel --url http://localhost:8080
@@ -86,10 +86,10 @@ except ImportError as e:
 @dataclass
 class VRTeleopConfig:
     # Single-arm mode: set robot_port + arm.  Dual-arm mode: set both *_port fields.
-    robot_port: str        = "/dev/tty.usbmodem5A7C1231311"  # used when arm != "both"
+    robot_port: str        = "/dev/tty.usbmodemXXXX"  # used when arm != "both"
     arm: str               = "right"                          # "left" | "right" | "both"
-    left_robot_port: str   = "/dev/tty.usbmodem5A7C1190111"
-    right_robot_port: str  = "/dev/tty.usbmodem5A7C1231311"
+    left_robot_port: str   = "/dev/tty.usbmodemXXXX"
+    right_robot_port: str  = "/dev/tty.usbmodemXXXX"
     robot_camera_index: int = -1
     control_hz: float = 30.0
     kp: float        = 1.0             # P-control gain (1.0 = direct, alpha smoothing handles lag)
@@ -813,11 +813,11 @@ def parse_args():
     p = argparse.ArgumentParser(description="VR teleop: Meta Quest 3 → SO-101 (single or dual arm)")
     p.add_argument("--arm",              default="both", choices=["left", "right", "both"],
                    help="Which arm to control (default: both)")
-    p.add_argument("--robot_port",       default="/dev/tty.usbmodem5A7C1231311",
+    p.add_argument("--robot_port",       default="/dev/tty.usbmodemXXXX",
                    help="Port for single-arm mode (--arm left or right)")
-    p.add_argument("--left_robot_port",  default="/dev/tty.usbmodem5A7C1190111",
+    p.add_argument("--left_robot_port",  default="/dev/tty.usbmodemXXXX",
                    help="Left arm port (used when --arm both)")
-    p.add_argument("--right_robot_port", default="/dev/tty.usbmodem5A7C1231311",
+    p.add_argument("--right_robot_port", default="/dev/tty.usbmodemXXXX",
                    help="Right arm port (used when --arm both)")
     p.add_argument("--control_hz",       type=float, default=30.0)
     p.add_argument("--kp",               type=float, default=1.0,

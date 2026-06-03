@@ -7,6 +7,23 @@
 
 ---
 
+## EMBER Additions
+
+This is a fork of [LeRobot](https://github.com/huggingface/lerobot) by HuggingFace. The files added by EMBER are:
+
+| File | Description |
+|---|---|
+| `src/lerobot/scripts/vr_teleop_real.py` | Main VR teleop script for real SO-101 arms |
+| `src/lerobot/scripts/vr_teleop_sim.py` | VR teleop for simulation |
+| `src/lerobot/scripts/print_joint_angles.py` | Print live joint angles from both arms |
+| `src/lerobot/model/SO101Robot.py` | SO-101 robot interface and IK |
+| `src/lerobot/model/kinematics.py` | 2D arm kinematics |
+| `examples/8_vr_teleop_with_dataset_recording.py` | VR teleop with LeRobot dataset recording |
+
+Everything else is standard LeRobot infrastructure.
+
+---
+
 ## Overview
 
 This project adds a VR teleoperation layer on top of the standard LeRobot stack. Instead of replaying recorded trajectories, you stream live hand-tracking data from a Quest 3 to a SO-101 arm (or a pair of arms) over a Cloudflare tunnel — no local network pairing required.
@@ -26,13 +43,11 @@ This project adds a VR teleoperation layer on top of the standard LeRobot stack.
 
 ## Prerequisites
 
-### 1. Install LeRobot
-
-Follow the [official LeRobot installation guide](https://github.com/huggingface/lerobot?tab=readme-ov-file#installation) and make sure the package is importable:
+### 1. Clone and install this repo
 
 ```bash
-git clone https://github.com/huggingface/lerobot.git
-cd lerobot
+git clone https://github.com/xiaozh26/EMBER-lerobot.git
+cd EMBER-lerobot
 pip install -e ".[feetech]"
 ```
 
