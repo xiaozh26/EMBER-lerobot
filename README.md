@@ -100,7 +100,7 @@ pip install aiohttp
 ```bash
 python src/lerobot/scripts/vr_teleop_real.py \
     --arm right \
-    --robot_port /dev/tty.usbmodem5A7C1231311
+    --robot_port /dev/tty.usbmodemXXXX
 ```
 
 ### Dual arm
@@ -108,9 +108,11 @@ python src/lerobot/scripts/vr_teleop_real.py \
 ```bash
 python src/lerobot/scripts/vr_teleop_real.py \
     --arm both \
-    --left_robot_port  /dev/tty.usbmodem5A7C1190111 \
-    --right_robot_port /dev/tty.usbmodem5A7C1231311
+    --left_robot_port  /dev/tty.usbmodemXXXX \
+    --right_robot_port /dev/tty.usbmodemXXXX
 ```
+
+Replace `XXXX` with your actual port numbers from `ls /dev/tty.usbmodem*`.
 
 ### All CLI flags
 
@@ -122,6 +124,8 @@ python src/lerobot/scripts/vr_teleop_real.py \
 | `--right_robot_port` | — | Serial port for right arm (dual mode) |
 | `--control_hz` | `30.0` | Control loop frequency (Hz) |
 | `--kp` | `1.0` | P-gain: 1.0 = direct, lower = smoother but laggier |
+| `--no-home` | — | Skip homing arms to parked pose on startup |
+| `--no-viz` | — | Disable the viser robot mirror |
 
 ---
 
@@ -143,6 +147,31 @@ Once the script is running you will see output like:
 2. Type the local URL shown in the terminal (e.g. `http://192.168.x.x:8080/go`). It redirects through the Cloudflare tunnel to the VR web UI.
 3. Tap the **VR goggles icon** to enter immersive mode.
 4. The arm will **not move** until the Quest 3 session is active — on first position data the arm seeds its target from the current joint angles and holds in place.
+
+---
+
+## Controls
+
+| Action | How |
+|---|---|
+| **Move arm** | Squeeze **GRIP** to activate, then move your hand. The arm tracks your hand while grip is held. |
+| **Freeze / reposition hand** | Release grip — arm stops and holds. Reposition freely, then grip again. |
+| **Gripper open/close** | Pull **trigger** |
+| **Reset to home pose** | Double-click grip (two quick presses) |
+| **Base movement** | Right thumbstick |
+| **Head pan/tilt** | Left thumbstick |
+
+> The arm **only moves while you are squeezing grip** — this is the grip clutch mechanic. Releasing grip freezes the arm so you can reposition your hand without moving the robot.
+
+On startup the arms smoothly move to a fixed home/parked pose. Pass `--no-home` to skip this.
+
+---
+
+## Viser Robot Mirror
+
+While the script is running, open **`http://localhost:8081`** in any browser on your laptop to see a live 3D visualization of the robot's actual joint angles. This lets you monitor what the robot is doing without looking at it directly.
+
+Pass `--no-viz` to skip the viser window if you don't need it.
 
 ---
 
