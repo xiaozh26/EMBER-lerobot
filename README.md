@@ -154,12 +154,11 @@ Once the script is running you will see output like:
 
 | Action | How |
 |---|---|
-| **Move arm** | Squeeze **GRIP** to activate, then move your hand. The arm tracks your hand while grip is held. |
+| **Move right arm** | Squeeze right controller **GRIP**, then move your right hand |
+| **Move left arm** | Squeeze left controller **GRIP**, then move your left hand |
 | **Freeze / reposition hand** | Release grip — arm stops and holds. Reposition freely, then grip again. |
 | **Gripper open/close** | Pull **trigger** |
 | **Reset to home pose** | Double-click grip (two quick presses) |
-| **Base movement** | Right thumbstick |
-| **Head pan/tilt** | Left thumbstick |
 
 > The arm **only moves while you are squeezing grip** — this is the grip clutch mechanic. Releasing grip freezes the arm so you can reposition your hand without moving the robot.
 
