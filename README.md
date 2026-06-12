@@ -1,7 +1,5 @@
 # XLVR — VR Teleoperation for XLeRobot
 
-> A project by the **Embodied Intelligence & Robotics Center (EMBER), UC Berkeley**
-
 > **XLVR** is the VR teleoperation code for [XLeRobot](https://github.com/Vector-Wangel/XLeRobot).
 > Control a real SO-101 robot arm with a **Meta Quest 3** headset in real time.
 > Delta-control IK bridge built on top of [LeRobot](https://github.com/huggingface/lerobot) and [XLeRobot/XLeVR](https://github.com/Vector-Wangel/XLeRobot).
